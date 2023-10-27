@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Story</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: baloo system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+          "Helvetica Neue", sans-serif;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #2dd1c9;
+      }
+      .card {
+        height: 500px;
+        width: 330px;
+        background-color: #fff;
+        border: 2px solid black;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+      }
+      .storyan {
+        height: 100px;
+        width: 100%;
+        border-bottom: 1px solid #e9dede;
+        padding: 10px;
+        /* display: flex; */
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      .storyan::-webkit-scrollbar {
+        display: none;
+      }
+      .story {
+        border: 2px solid red;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 2px;
+        display: inline-block;
+      }
+      .story img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+      #full-screen {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        display: none;
+        z-index: 100;
+      }
+      .container{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 7px;
+      }
+      .p-pic{
+        height: 40px;
+        width: 40px;
+        background-color: red;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .p-pic img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+      .container h1{
+        font-size: 20px;
+        margin-left: 7px;
+      }
+      .post{
+        height: 320px;
+        width: 280px;
+        background-color: red;
+        position: absolute;
+        left: 7%;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .post img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div id="full-screen"></div>
+      <div class="storyan">
+        <div class="story"></div>
+        <div class="story"></div>
+        <div class="story"></div>
+      </div>
+      <div class="container">
+          <div class="p-pic">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          </div>
+          <h1 class="p-name">Itsrosan__</h1>
+      </div>
+      <div class="post">
+        <img src="https://images.unsplash.com/photo-1582648921709-f801d24fa640?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D" alt="">
+      </div>
+    </div>
+
+    <script>
+      var arr = [
+        {
+          dp: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          story:
+            "https://images.unsplash.com/photo-1524638431109-93d95c968f03?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          dp: "https://images.unsplash.com/photo-1660118235438-5cfe4d6a0e28?auto=format&fit=crop&q=80&w=1527&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          story:
+            "https://images.unsplash.com/photo-1586907835000-f692bbd4c9e0?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D",
+        },
+        {
+          dp: "https://images.unsplash.com/photo-1660118248632-103511f9b337?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
+          story:
+            "https://images.unsplash.com/photo-1587343838096-cb9ec21466f4?auto=format&fit=crop&q=80&w=1530&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          dp: "https://images.unsplash.com/photo-1587343842194-d2c53873a4a6?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
+          story:
+            "https://images.unsplash.com/photo-1587343872016-6b156c52bb9a?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8",
+        },
+        {
+          dp: "https://images.unsplash.com/photo-1587343872016-6b156c52bb9a?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8",
+          story:
+            "https://images.unsplash.com/photo-1587343872016-6b156c52bb9a?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8",
+        },
+      ];
+
+      var storyan = document.querySelector(".storyan");
+      let full = document.querySelector("#full-screen");
+      var clutter = "";
+      arr.forEach(function (elem, ia) {
+        clutter += `<div class="story">
+          <img id="${ia}" src="${elem.dp}" alt="">
+        </div>`;
+      });
+      storyan.innerHTML = clutter;
+      storyan.addEventListener("click", function (dets) {
+        let st = arr[dets.target.id].story;
+        full.style.display = "block";
+        full.style.backgroundImage = `url(${st})`;
+
+        setTimeout(function () {
+          full.style.display = "none";
+        }, 4000);
+        // console.log(arr[dets.target.id].story)
+      });
+    </script>
+  </body>
+</html>
